@@ -1,0 +1,26 @@
+{
+    "best_model": "RandomForest",
+    "features": [
+        "brand",
+        "ram",
+        "storage",
+        "battery",
+        "camera_mp",
+        "screen_size",
+        "is_5g",
+        "has_fingerprint",
+        "has_nfc"
+    ],
+    "labels": {
+        "0": "Budget",
+        "1": "Mid-Range",
+        "2": "Premium",
+        "3": "Ultra-Flagship"
+    },
+    "price_ranges_inr": {
+        "Budget": "500 - 14,999",
+        "Mid-Range": "15,000 - 29,999",
+        "Premium": "30,000 - 54,999",
+        "Ultra-Flagship": "55,000 - 200,999"
+    }
+}

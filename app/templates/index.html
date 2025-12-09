@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mobile Price Range Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📱 Mobile Price Range Prediction</h1>
+        <p class="subtitle">Select specifications to estimate the phone's price category.</p>
+
+        <form action="/predict" method="POST" class="form-box">
+
+            <!-- Brand -->
+            <label>Brand</label>
+            <select name="brand" required>
+                {% for b in brand_options %}
+                <option value="{{ b }}">{{ b }}</option>
+                {% endfor %}
+            </select>
+
+            <!-- RAM -->
+            <label>RAM (GB)</label>
+            <select name="ram" required>
+                {% for r in ram_options %}
+                <option value="{{ r }}">{{ r }} GB</option>
+                {% endfor %}
+            </select>
+
+            <!-- Storage -->
+            <label>Storage (GB)</label>
+            <select name="storage" required>
+                {% for s in storage_options %}
+                <option value="{{ s }}">{{ s }} GB</option>
+                {% endfor %}
+            </select>
+
+            <!-- Battery -->
+            <label>Battery Capacity (mAh)</label>
+            <select name="battery" required>
+                {% for b in battery_options %}
+                <option value="{{ b }}">{{ b }} mAh</option>
+                {% endfor %}
+            </select>
+
+            <!-- Camera -->
+            <label>Rear Camera (Megapixels)</label>
+            <select name="camera_mp" required>
+                {% for c in camera_options %}
+                <option value="{{ c }}">{{ c }} MP</option>
+                {% endfor %}
+            </select>
+
+            <!-- Screen Size -->
+            <label>Screen Size (Inches)</label>
+            <select name="screen_size" required>
+                {% for sc in size_options %}
+                <option value="{{ sc }}">{{ sc }}"</option>
+                {% endfor %}
+            </select>
+
+            <!-- 5G Support -->
+            <label>5G Support?</label>
+            <select name="is_5g" required>
+                {% for val, text in bool_options %}
+                <option value="{{ val }}">{{ text }}</option>
+                {% endfor %}
+            </select>
+
+            <!-- Fingerprint Sensor -->
+            <label>Fingerprint Sensor?</label>
+            <select name="has_fingerprint" required>
+                {% for val, text in bool_options %}
+                <option value="{{ val }}">{{ text }}</option>
+                {% endfor %}
+            </select>
+
+            <!-- NFC -->
+            <label>NFC Support?</label>
+            <select name="has_nfc" required>
+                {% for val, text in bool_options %}
+                <option value="{{ val }}">{{ text }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit" class="btn">Predict Price</button>
+        </form>
+
+        {% if prediction_label %}
+        <div class="result-box">
+            <h2>🎯 Predicted Price Range: <span>{{ prediction_label }}</span></h2>
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>
